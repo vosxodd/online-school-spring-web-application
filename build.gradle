@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.6'
+    id "io.spring.dependency-management" version "1.1.0"
+    id 'java'
+}
+
+group 'rest-service'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def springBootVersion = "2.4.6"
+    annotationProcessor "org.projectlombok:lombok"
+    implementation "org.projectlombok:lombok:1.18.24"
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.22'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    implementation "org.postgresql:postgresql:42.2.19"
+    implementation "mysql:mysql-connector-java:8.0.17"
+    implementation 'org.projectlombok:lombok:1.18.22'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}

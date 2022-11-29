@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/web #Нужно указать вашу БД
+    username: root # пользователь который указат у вас при создании БД
+    password: 12345 # пароль который указат у вас при создании БД
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: never
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
