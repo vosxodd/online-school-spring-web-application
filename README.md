@@ -5,6 +5,11 @@
    в). spring.datasource.password <br>
 2. Выполнить запрос в БД:
 ``` sql
+set names utf8;
+create database web;
+use web;
+set global time_zone = '+7:00';
+
 CREATE TABLE videos(
 id binary(16),
 name varchar(30),
@@ -16,6 +21,6 @@ primary key (id)
 ```
  
 Ссылки :
-1. URL : `http://localhost:8081`
+1. URL : `http://localhost:8080`
 
 
