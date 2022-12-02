@@ -31,6 +31,7 @@ public class VideoService {
         return getAllVideos();
     }
 
+    // Yet it is useless
     public ModelAndView getAllVideos() {
         List<Video> videos = videoRepository.findAllVideos();
         List<VideoDto> resultList = new ArrayList<>();
@@ -57,4 +58,10 @@ public class VideoService {
     public void removeVideoById(UUID id) {
         videoRepository.deleteById(id);
     }
+
+    public boolean isEmpty() {
+        //TODO: return true if database is empty.
+        return true;
+    }
 }
+
