@@ -1,4 +1,4 @@
-Передзапуском нужно:
+Перед запуском нужно:
 1. В файле application.yml поменять переменные для подключения к локальной базе: <br>
    a). spring.datasource.url <br>
    б). spring.datasource.user <br>
