@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -16,8 +16,9 @@
       <a class="btn btn-dark" href="addpage">+ add a lesson</a>
     </nav>
 
+    <form action="/addpage" method="post" th:object="${videoDto}">
     <div>
-      <select class="form-select my-3 form-select-lg" id="selector">
+      <select name="category" class="form-select my-3 form-select-lg" id="selector">
         <option selected disabled>Choose lesson category</option>
       </select>
 
@@ -45,22 +46,23 @@
         </div>
       </div>
     </div>
-    <form action="/mainpage" method="post" th:object="${videoDto}">
+
     <div class="input-group mb-3 d-flex" align="center">
       <span class="input-group-text my-2" id="lesson name span">Lesson name:</span>
-      <input type="text" class="my-2" size="31" maxlength="30" placeholder="lesson name" aria-label="lesson name" aria-describedby="lesson name" id="lesson name">
+      <input type="text" class="my-2" size="31" maxlength="30" placeholder="lesson name" aria-label="lesson name" aria-describedby="lesson name" name="name" id="lesson name">
       <span class="my-3 mx-3 text-danger" id="status"></span>
     </div>
     <div class="input-group " align="center">
       <span class="input-group-text ">Description:</span>
-      <textarea rows="4" cols="36" aria-label="lesson description" maxlength="300" placeholder="lesson description" id="lesson description"></textarea>
-    </div></form>
+      <textarea rows="4" cols="36" aria-label="lesson description" maxlength="300" placeholder="lesson description" id="lesson description" name="about"></textarea>
+    </div>
+    </form>
 
     <div class="input-group mb-3 my-3">
       <input type="file" id="videoinput" />
     </div>
     <div>
-      <input type="button" class="rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " onclick="isEmpty()">
+      <input type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " onclick="isEmpty()">
       <a class="btn mx-3 rounded-pill btn-danger" href="/">CANCEL</a>
       <script>
         function isEmpty() {
