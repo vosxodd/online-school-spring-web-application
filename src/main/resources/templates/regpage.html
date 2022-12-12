@@ -9,6 +9,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <nav class="navbar navbar-light bg-secondary">
     <a class="navbar-brand" href="/">
         <img src="book.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -19,7 +20,7 @@
 </nav>
 <center>
 
-    <form action="">
+    <form action="/regpage" method="get">
         <fieldset  class="btn btn-primary" style="position:relative; top:100px; width:500px; height:350px">
             <legend style="position:relative; top:10px">
                 Войдите в систему
@@ -27,11 +28,11 @@
             <a class="btn btn-secondary" href="regpage" style="position:relative;left:85px" >Зарегистрироваться</a>
             <a class="btn btn-secondary" href="logpage" style="position:relative;left:85px" >Войти</a>
 
-            <input type="text" placeholder="Введите email" style="position:relative;top:45px;left:-130px" required>
-            <input type="password" placeholder="Введите пароль" style="position:relative; top:50px; left:140px "required>
-            <input type="text" placeholder="Введите имя" style="position:relative; top:90px; left:-53px">
-            <input type="checkbox" name="Преподаватель" style="position:relative; top:140px; left:-230px">
-            <input class="btn btn-secondary" type="submit" value="Войти" style="position:relative; top:170px; left:-200px">
+            <input type="text" name="email" placeholder="Введите email" style="position:relative;top:45px;left:-130px" required>
+            <input type="password" name="pwd" placeholder="Введите пароль" style="position:relative; top:50px; left:140px "required>
+            <input type="text" name="nickname" placeholder="Введите имя" style="position:relative; top:90px; left:-53px">
+            <input type="checkbox" name="teacher" style="position:relative; top:140px; left:-230px">
+            <input class="btn btn-secondary" type="submit" value="Далее" style="position:relative; top:170px; left:-200px">
             <p style="position:relative; top:110px">Преподаватель</p>
         </fieldset>
     </form>

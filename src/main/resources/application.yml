@@ -7,6 +7,5 @@ spring:
     initialization-mode: never
   thymeleaf:
     cache: false
-
 server:
   port: 8080

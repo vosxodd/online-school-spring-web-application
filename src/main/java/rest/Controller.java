@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.VideoDto;
+import rest.persistence.entity.Person;
+import rest.persistence.repository.PersonRepository;
 import rest.service.HtmlPageService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,9 @@ public class Controller {
 
     @Autowired
     private HtmlPageService htmlPageService;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @GetMapping(value = "/")
     public ModelAndView welcome() {
@@ -46,5 +51,17 @@ public class Controller {
         modelAndView.clear();
         htmlPageService.removeVideo(id);
         response.sendRedirect("/");
+    }
+    @GetMapping(value = "/regpage")
+    public ModelAndView regPerson() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("regpage");
+        return modelAndView;
+    }
+
+    @PostMapping("/regpage")
+    public String regPerson(Person person){
+        personRepository.save(person);
+        return "/regpage";
     }
 }

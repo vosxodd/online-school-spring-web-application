@@ -21,7 +21,7 @@
 
 <center>
 
-<form action="">
+<form action="/logpage" method="post">
     <fieldset  class="btn btn-primary" style="position:relative; top:100px; width:500px; height:300px">
         <legend style="position:relative; top:10px">
             Войдите в систему
@@ -29,8 +29,8 @@
         <a class="btn btn-secondary" href="regpage" style="position:relative;left:85px" >Зарегистрироваться</a>
         <a class="btn btn-secondary" href="logpage" style="position:relative;left:85px" >Войти</a>
 
-        <input type="text" placeholder="Введите email" style="position:relative;top:65px;left:-130px" required>
-        <input type="password" placeholder="Введите пароль" style="position:relative; top:90px; left:33px "required>
+        <input name="email" placeholder="Введите email" style="position:relative;top:65px;left:-130px" required>
+        <input name="pwd" type="password" placeholder="Введите пароль" style="position:relative; top:90px; left:33px " required>
         <input class="btn btn-secondary" type="submit" value="Войти" style="position:relative; top:150px; left:-100px">
     </fieldset>
 </form>
