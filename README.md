@@ -17,6 +17,19 @@ about varchar(100),
 category varchar(30),
 primary key (id)
 );
+
+create table person(
+id bigint not null auto_increment,
+nickname varchar(30),
+pwd varchar(30),
+email varchar(50),
+teacher boolean,
+primary key(id)
+);
+
+INSERT person(nickname, pwd, email, teacher)
+VALUES ('qwerty','123', '1@mail.com', true);
+select * from person
 ```
  
 Ссылки :
