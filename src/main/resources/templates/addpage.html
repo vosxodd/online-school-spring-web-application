@@ -16,9 +16,9 @@
       <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
     </nav>
 
-    <form action="/addpage" method="post" th:object="${videoDto}">
+    <form action="/addpage" method="post" th:object="${videoDto}" id="add_form">
     <div>
-      <select name="category" class="form-select my-3 form-select-lg" id="selector">
+      <select name="category" class="form-select my-3 form-select-lg" form="add_form" id="selector">
         <option selected disabled>Choose lesson category</option>
       </select>
 
@@ -62,7 +62,7 @@
       <input type="file" id="videoinput" />
     </div>
     <div>
-      <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="mainpage"></button>
+      <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="mainpage">ADD LESSON</button>
       <a class="btn mx-3 rounded-pill btn-danger" href="/">CANCEL</a>
       <script>
         function isEmpty() {
