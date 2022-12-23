@@ -4,8 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.VideoDto;
 
-import java.util.UUID;
-
 @Service
 public class HtmlPageService {
 
@@ -23,7 +21,7 @@ public class HtmlPageService {
         return videoService.createVideo(videoDto);
     }
 
-    public void removeVideo(UUID id) {
+    public void removeVideo(Long id) {
         videoService.removeVideoById(id);
     }
 }

@@ -11,11 +11,10 @@ use web;
 set global time_zone = '+7:00';
 
 CREATE TABLE videos(
-id binary(16),
+id bigint NOT NULL AUTO_INCREMENT,
 name varchar(30),
 about varchar(100),
 category varchar(30),
-teacher varchar(30),
 primary key (id)
 );
 ```

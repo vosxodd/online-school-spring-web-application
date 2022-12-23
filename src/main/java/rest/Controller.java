@@ -29,9 +29,13 @@ public class Controller {
         return modelAndView;
     }
 
+
     @GetMapping(value = "/all-videos")
     public ModelAndView showVideos() {
-        return htmlPageService.createVideoPage();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.getModel().put("listOfVideos", htmlPageService.createVideoPage());
+        modelAndView.setViewName("mainpage");
+        return modelAndView;
     }
 
     @GetMapping(value = "/addpage")
@@ -47,7 +51,7 @@ public class Controller {
     }
 
     @GetMapping(value = "/remove/{id}")
-    public void removeVideo(@PathVariable(value = "id") UUID id, HttpServletResponse response, ModelAndView modelAndView) throws IOException {
+    public void removeVideo(@PathVariable(value = "id") Long id, HttpServletResponse response, ModelAndView modelAndView) throws IOException {
         modelAndView.clear();
         htmlPageService.removeVideo(id);
         response.sendRedirect("/");

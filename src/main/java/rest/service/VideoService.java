@@ -21,7 +21,7 @@ public class VideoService {
 
     public ModelAndView createVideo(VideoDto studentDto) {
         Video video = new Video();
-        video.setId(UUID.randomUUID());
+        //video.setId(UUID.randomUUID());
         video.setName(studentDto.getName());
         video.setAbout(studentDto.getAbout());
         video.setCategory(studentDto.getCategory());
@@ -35,9 +35,8 @@ public class VideoService {
     public ModelAndView getAllVideos() {
         List<Video> videos = videoRepository.findAllVideos();
         List<VideoDto> resultList = new ArrayList<>();
-        for (Video video : videos) {
+        for (Video video: videos) {
             VideoDto videoDto = new VideoDto();
-            videoDto.setId(video.getId().toString());
             videoDto.setName(video.getName());
             videoDto.setAbout(video.getAbout());
             videoDto.setCategory(video.getCategory());
@@ -47,6 +46,19 @@ public class VideoService {
         return createAndFillModel(resultList);
     }
 
+    public ModelAndView getCategories() {
+        List<Video> videos = videoRepository.getCategories();
+        List<VideoDto> resultList = new ArrayList<>();
+        for (Video video: videos) {
+            VideoDto videoDto = new VideoDto();
+            videoDto.setCategory(video.getCategory());
+            resultList.add(videoDto);
+        }
+
+        return createAndFillModel(resultList);
+    }
+
+
     private ModelAndView createAndFillModel(List<VideoDto> videoDtos) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.clear();
@@ -55,7 +67,7 @@ public class VideoService {
         return modelAndView;
     }
 
-    public void removeVideoById(UUID id) {
+    public void removeVideoById(Long id) {
         videoRepository.deleteById(id);
     }
 
