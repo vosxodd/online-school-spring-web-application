@@ -13,7 +13,7 @@ import java.util.UUID;
 public class VideoDto {
 
     private String id;
-    private String name;
-    private String about;
-    private String category;
+    private String name; ///
+    private String about; ///
+    private String category; ///
 }

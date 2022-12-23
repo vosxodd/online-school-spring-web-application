@@ -13,7 +13,7 @@
         <img src="resources/static/styles/book.png" width="30" height="30" class="d-inline-block align-top">
         BruhLearning
       </a>
-      <a class="btn btn-dark" href="addpage">+ add a lesson</a>
+      <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
     </nav>
 
     <form action="/addpage" method="post" th:object="${videoDto}">
@@ -56,13 +56,13 @@
       <span class="input-group-text ">Description:</span>
       <textarea rows="4" cols="36" aria-label="lesson description" maxlength="300" placeholder="lesson description" id="lesson description" name="about"></textarea>
     </div>
-    </form>
+
 
     <div class="input-group mb-3 my-3">
       <input type="file" id="videoinput" />
     </div>
     <div>
-      <input type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " onclick="isEmpty()">
+      <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="mainpage"></button>
       <a class="btn mx-3 rounded-pill btn-danger" href="/">CANCEL</a>
       <script>
         function isEmpty() {
@@ -81,5 +81,6 @@
           }
       </script>
     </div>
+    </form>
   </body>
 </html>
