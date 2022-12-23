@@ -11,7 +11,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VideoDto {
-
     private String id;
     private String name; ///
     private String about; ///
