@@ -18,15 +18,18 @@ public class VideoService {
         this.videoRepository = userRepository;
     }
 
-    public ModelAndView createVideo(VideoDto studentDto) {
-        Video video = new Video();
-        video.setName(studentDto.getName());
-        video.setAbout(studentDto.getAbout());
-        video.setCategory(studentDto.getCategory());
+    public void createVideo(VideoDto studentDto) {
+        String name = studentDto.getName();
+        String about = studentDto.getAbout();
+        String category = studentDto.getCategory();
+        if (!name.equals("") & !about.equals("") & !category.equals("")){
+            Video video = new Video();
+            video.setName(name);
+            video.setAbout(about);
+            video.setCategory(category);
+            videoRepository.save(video);
+        }
 
-        videoRepository.save(video);
-
-        return getAllVideos();
     }
 
     // Yet it is useless
@@ -55,7 +58,6 @@ public class VideoService {
 
         return createAndFillModel(resultList);
     }
-
 
     private ModelAndView createAndFillModel(List<VideoDto> videoDtos) {
         ModelAndView modelAndView = new ModelAndView();
