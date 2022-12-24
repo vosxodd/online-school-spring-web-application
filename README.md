@@ -11,13 +11,25 @@ use web;
 set global time_zone = '+7:00';
 
 CREATE TABLE videos(
-id binary(16),
+id bigint NOT NULL AUTO_INCREMENT,
 name varchar(30),
 about varchar(100),
 category varchar(30),
-teacher varchar(30),
 primary key (id)
 );
+
+create table person(
+id bigint not null auto_increment,
+nickname varchar(30),
+pwd varchar(30),
+email varchar(50),
+teacher boolean,
+primary key(id)
+);
+
+INSERT person(nickname, pwd, email, teacher)
+VALUES ('qwerty','123', '1@mail.com', true);
+select * from person
 ```
  
 Ссылки :
