@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -16,28 +16,35 @@
         BruhLearning
     </a>
     <a class="btn btn-dark" href="addpage" style="position:relative; left:-90px">+ add a lesson</a>
-    <a class="btn btn-dark" href="Logpage">Login</a>
+    <a class="btn btn-dark" href="logpage">Login</a>
 </nav>
-<center>
 
-    <form action="/regpage" method="get">
-        <fieldset  class="btn btn-primary" style="position:relative; top:100px; width:500px; height:350px">
-            <legend style="position:relative; top:10px">
-                Войдите в систему
-            </legend>
-            <a class="btn btn-secondary" href="regpage" style="position:relative;left:85px" >Зарегистрироваться</a>
-            <a class="btn btn-secondary" href="logpage" style="position:relative;left:85px" >Войти</a>
+<div class="d-flex justify-content-center">
+    <a class="my-3 btn btn-primary" href="regpage" >Зарегистрироваться</a>
+    <a class="my-3 mx-1 btn btn-primary" href="loggpage" >Войти</a>
+</div>
+<form action="/regpage" method="post" th:object="${personDto}">
+    <div class="" >
+    <div class="d-flex justify-content-center">
+        <input type="text" name="email" placeholder="Введите email" required>
+    </div>
 
-            <input type="text" name="email" placeholder="Введите email" style="position:relative;top:45px;left:-130px" required>
-            <input type="password" name="pwd" placeholder="Введите пароль" style="position:relative; top:50px; left:140px "required>
-            <input type="text" name="nickname" placeholder="Введите имя" style="position:relative; top:90px; left:-53px">
-            <input type="checkbox" name="teacher" style="position:relative; top:140px; left:-230px">
-            <input class="btn btn-secondary" type="submit" value="Далее" style="position:relative; top:170px; left:-200px">
-            <p style="position:relative; top:110px">Преподаватель</p>
-        </fieldset>
-    </form>
-</center>
+    <div class="my-1 d-flex justify-content-center">
+        <input type="password" name="pwd" placeholder="Введите пароль" required>
+    </div>
 
+    <div class="my-1 d-flex justify-content-center">
+        <input type="text" name="nickname" placeholder="Введите имя" required>
+    </div>
 
+    <div class="my-1 d-flex justify-content-center">
+        <a>Вы - преподаватель? - </a>
+        <input class="mx-1 my-1" type="checkbox" name="teacher" >
+    </div>
+    <div class="my-1 d-flex justify-content-center">
+        <input class="btn btn-success " type="submit" value="Зарегистрироваться" href="/mainpage">
+    </div>
+    </div>
+</form>
 </body>
 </html>
