@@ -17,4 +17,5 @@ public class Video {
     private String name;
     private String about;
     private String category;
+    private String video;
 }

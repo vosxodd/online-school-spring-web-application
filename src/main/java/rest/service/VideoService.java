@@ -21,7 +21,6 @@ public class VideoService {
 
     public ModelAndView createVideo(VideoDto studentDto) {
         Video video = new Video();
-        //video.setId(UUID.randomUUID());
         video.setName(studentDto.getName());
         video.setAbout(studentDto.getAbout());
         video.setCategory(studentDto.getCategory());
