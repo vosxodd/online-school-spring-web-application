@@ -53,7 +53,7 @@ public class Controller {
         if (!(file.isEmpty())) {
             // generate random Long for Id
             long leftLimit = 1L;
-            long rightLimit = 1000000000000000000L;
+            long rightLimit = 9223372036854775807L;
             long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
             videoDto.setVideo(generatedLong + ".mp4");
             FileUploadService.saveFile(file, generatedLong + ".mp4");
