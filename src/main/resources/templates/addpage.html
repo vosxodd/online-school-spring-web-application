@@ -16,7 +16,7 @@
       <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
     </nav>
 
-    <form action="/addpage" method="post" th:object="${videoDto}" id="add_form">
+    <form action="/addpage" enctype="multipart/form-data" method="post" th:object="${videoDto}" id="add_form">
     <div>
       <select name="category" class="form-select my-3 form-select-lg" form="add_form" id="selector">
         <option value="123">Choose lesson category</option>
@@ -59,7 +59,7 @@
 
 
     <div class="input-group mb-3 my-3">
-      <input type="file" id="videoinput" />
+      <input type="file" name="file"  id="videoinput" />
     </div>
     <div>
       <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="/">ADD LESSON</button>

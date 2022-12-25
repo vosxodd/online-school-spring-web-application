@@ -19,14 +19,13 @@ public class VideoService {
         this.videoRepository = userRepository;
     }
 
-    public ModelAndView createVideo(VideoDto studentDto) {
+    public ModelAndView createVideo(VideoDto videoDto) {
         Video video = new Video();
-        video.setName(studentDto.getName());
-        video.setAbout(studentDto.getAbout());
-        video.setCategory(studentDto.getCategory());
-
+        video.setName(videoDto.getName());
+        video.setAbout(videoDto.getAbout());
+        video.setCategory(videoDto.getCategory());
+        video.setVideo(videoDto.getVideo());
         videoRepository.save(video);
-
         return getAllVideos();
     }
 

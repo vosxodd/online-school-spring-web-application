@@ -12,7 +12,7 @@ import rest.service.HtmlPageService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.UUID;
+
 
 @RestController
 public class Controller {
@@ -53,10 +53,10 @@ public class Controller {
         if (!(file.isEmpty())) {
             // generate random Long for Id
             long leftLimit = 1L;
-            long rightLimit = 10L;
+            long rightLimit = 1000000000000000000L;
             long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
-            videoDto.setVideo(String.valueOf(generatedLong) + ".mp4");
-            FileUploadService.saveFile(file, String.valueOf(generatedLong) + ".mp4");
+            videoDto.setVideo(generatedLong + ".mp4");
+            FileUploadService.saveFile(file, generatedLong + ".mp4");
             return htmlPageService.createVideo(videoDto);
         } else {
             return null;
