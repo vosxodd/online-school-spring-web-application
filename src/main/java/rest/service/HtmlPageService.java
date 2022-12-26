@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.VideoDto;
 
+import java.util.List;
+
 @Service
 public class HtmlPageService {
 
@@ -13,7 +15,7 @@ public class HtmlPageService {
         this.videoService = videoService;
     }
 
-    public ModelAndView createVideoPage() {
+    public List<VideoDto> createVideoPage() {
         return videoService.getAllVideos();
     }
 
@@ -23,5 +25,9 @@ public class HtmlPageService {
 
     public void removeVideo(Long id) {
         videoService.removeVideoById(id);
+    }
+
+    public List<VideoDto> getCategories() {
+        return videoService.getCategories();
     }
 }

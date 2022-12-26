@@ -8,7 +8,6 @@ import rest.persistence.repository.VideoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class VideoService {
@@ -26,11 +25,11 @@ public class VideoService {
         video.setCategory(videoDto.getCategory());
         video.setVideo(videoDto.getVideo());
         videoRepository.save(video);
-        return getAllVideos();
+        return createAndFillModel(getAllVideos());
     }
 
     // Yet it is useless
-    public ModelAndView getAllVideos() {
+    public List<VideoDto> getAllVideos() {
         List<Video> videos = videoRepository.findAllVideos();
         List<VideoDto> resultList = new ArrayList<>();
         for (Video video: videos) {
@@ -41,10 +40,10 @@ public class VideoService {
             resultList.add(videoDto);
         }
 
-        return createAndFillModel(resultList);
+        return resultList;
     }
 
-    public ModelAndView getCategories() {
+    public List<VideoDto> getCategories() {
         List<Video> videos = videoRepository.getCategories();
         List<VideoDto> resultList = new ArrayList<>();
         for (Video video: videos) {
@@ -53,7 +52,7 @@ public class VideoService {
             resultList.add(videoDto);
         }
 
-        return createAndFillModel(resultList);
+        return resultList;
     }
 
 

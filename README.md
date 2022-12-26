@@ -3,7 +3,8 @@
    a). spring.datasource.url <br>
    б). spring.datasource.user <br>
    в). spring.datasource.password <br>
-2. Выполнить запрос в БД:
+2. Создать папку videos в resources, которая будет служить локальным хранилищем видеоуроков.
+3. Выполнить запрос в БД:
 ``` sql
 set names utf8;
 create database web;

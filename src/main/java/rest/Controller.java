@@ -23,19 +23,13 @@ public class Controller {
     @Autowired
     private PersonRepository personRepository;
 
+
     @GetMapping(value = "/")
-    public ModelAndView welcome() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("mainpage");
-        modelAndView.getModel().put("title", "Главная");
-        return modelAndView;
-    }
-
-
-    @GetMapping(value = "/all-videos")
     public ModelAndView showVideos() {
         ModelAndView modelAndView = new ModelAndView();
+        // TODO: Клиент должен принимать "listOfVideos" и размещать названия и категории на странице, а также размещать видео им соответсвующие.
         modelAndView.getModel().put("listOfVideos", htmlPageService.createVideoPage());
+        modelAndView.getModel().put("title", "Главная страница");
         modelAndView.setViewName("mainpage");
         return modelAndView;
     }
@@ -43,6 +37,8 @@ public class Controller {
     @GetMapping(value = "/addpage")
     public ModelAndView addLesson() {
         ModelAndView modelAndView = new ModelAndView();
+        // TODO: Клиент должен принимать "categories" и совать в селектор.
+        modelAndView.getModel().put("categories", htmlPageService.getCategories());
         modelAndView.setViewName("addpage");
         return modelAndView;
     }
