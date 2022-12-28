@@ -9,6 +9,7 @@ import rest.persistence.entity.Person;
 import rest.persistence.repository.PersonRepository;
 import rest.service.FileUploadService;
 import rest.service.HtmlPageService;
+import rest.service.VideoService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class Controller {
     public ModelAndView addLesson() {
         ModelAndView modelAndView = new ModelAndView();
         // TODO: Клиент должен принимать "categories" и совать в селектор.
-        modelAndView.getModel().put("categories", htmlPageService.getCategories());
+        modelAndView.addObject("categories", htmlPageService.getCategories());
         modelAndView.setViewName("addpage");
         return modelAndView;
     }
