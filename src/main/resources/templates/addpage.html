@@ -17,7 +17,6 @@
 </nav>
 
 <form action="/addpage" enctype="multipart/form-data" method="post" id="add_form" >
-
     <select name="category" class="form-select my-3 form-select-lg" form="add_form" id="selector">
       <option value="empty">Choose...</option>
       <option th:each="row : ${categories}" th:value="${row}" th:label="${row}">

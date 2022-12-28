@@ -24,7 +24,7 @@ public class VideoService {
         video.setName(videoDto.getName());
         video.setAbout(videoDto.getAbout());
         video.setCategory(videoDto.getCategory());
-        video.setVideo(videoDto.getVideo());
+        video.setVideo("/videos/" + videoDto.getVideo());
         videoRepository.save(video);
         return createAndFillModel(getAllVideos());
     }

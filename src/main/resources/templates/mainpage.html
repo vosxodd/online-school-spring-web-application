@@ -14,6 +14,18 @@
       </a>
       <a class="btn btn-dark" href="addpage">+ add a lesson</a>
     </nav>
-    У вас пока нет уроков.
+    <table>
+        <tr th:each="element : ${categoryAndPaths}">
+            <table>
+                <tr th:text="${element.category}"></tr>
+                <td th:each = "m : ${element.listOfPaths}">
+                    <video width="320" height="240" controls>
+                        <source th:src="${m}" type=video/mp4>
+                    </video>
+                </td>
+            </table>
+        </tr>
+    </table>
+
   </body>
 </html>

@@ -26,7 +26,7 @@ public class FileUploadService {
 
     public static void saveFile(MultipartFile file, String fileName) throws IOException {
         try (InputStream inputStream =  file.getInputStream()) {
-            Path path = Paths.get("src\\main\\resources\\videos").resolve(fileName);
+            Path path = Paths.get("src\\main\\resources\\static\\videos").resolve(fileName);
             Files.copy(inputStream, path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
