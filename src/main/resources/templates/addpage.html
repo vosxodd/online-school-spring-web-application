@@ -16,27 +16,17 @@
   <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
 </nav>
 
-<form action="/addpage" enctype="multipart/form-data" method="post" id="add_form">
-  <div>
+<form action="/addpage" enctype="multipart/form-data" method="post" id="add_form" >
+
     <select name="category" class="form-select my-3 form-select-lg" form="add_form" id="selector">
-      <option value="empty">Choose lesson category</option>
+      <option value="empty">Choose...</option>
+      <option th:each="row : ${categories}" th:value="${row}" th:label="${row}">
     </select>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-sm btn-primary mx-1 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
       ADD CATEGORY
     </button>
 
-    <button type="button" onclick="makeSelect()">
-      ADD CATEGORY
-    </button>
-    <script>
-      function makeSelect(${categories}){
-        var select = document.getElementById("selector")
-
-
-
-      }
-    </script>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">

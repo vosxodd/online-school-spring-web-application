@@ -14,6 +14,7 @@ import rest.service.VideoService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class Controller {
@@ -39,7 +40,7 @@ public class Controller {
     public ModelAndView addLesson() {
         ModelAndView modelAndView = new ModelAndView();
         // TODO: Клиент должен принимать "categories" и совать в селектор.
-        modelAndView.addObject("categories", htmlPageService.getCategories());
+        modelAndView.getModel().put("categories", htmlPageService.getCategories());
         modelAndView.setViewName("addpage");
         return modelAndView;
     }

@@ -14,6 +14,4 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
     @Query(value = "SELECT * FROM videos", nativeQuery = true)
     List<Video> findAllVideos();
 
-    @Query(value = "SELECT DISTINCT category FROM videos", nativeQuery = true)
-    List<Video> getCategories();
 }
