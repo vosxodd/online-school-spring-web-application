@@ -1,87 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson's editor</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-light bg-secondary">
-      <a class="navbar-brand" href="/">
-        <img src="resources/static/styles/book.png" width="30" height="30" class="d-inline-block align-top">
-        BruhLearning
-      </a>
-      <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
-    </nav>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson's editor</title>
+</head>
+<body>
+<nav class="navbar navbar-light bg-secondary">
+  <a class="navbar-brand" href="/">
+    <img th:src="@{/img/book.png}" width="30" height="30" class="d-inline-block align-top">
+    BruhLearning
+  </a>
+  <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
+</nav>
 
-    <form action="/addpage" enctype="multipart/form-data" method="post" th:object="${videoDto}" id="add_form">
-    <div>
-      <select name="category" class="form-select my-3 form-select-lg" form="add_form" id="selector">
-        <option value="123">Choose lesson category</option>
-      </select>
+<form action="/addpage" enctype="multipart/form-data" method="post" id="add_form" >
 
+    <select name="category" class="form-select my-3 form-select-lg" form="add_form" id="selector">
+      <option value="empty">Choose...</option>
+      <option th:each="row : ${categories}" th:value="${row}" th:label="${row}">
+    </select>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-sm btn-primary mx-1 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      ADD CATEGORY
+    </button>
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-primary mx-1 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        ADD CATEGORY
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title fs-5" id="exampleModalLabel">Enter lesson category:</h3>
-            </div>
-            <div class="modal-body">
-              <input type="text" class="form-control" id="lessonCategory">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="changeContent()" data-bs-dismiss="modal">Save changes</button>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title fs-5" id="exampleModalLabel">Enter lesson category:</h3>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control" id="lessonCategory">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="changeContent()" data-bs-dismiss="modal">Save changes</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="input-group mb-3 d-flex" align="center">
-      <span class="input-group-text my-2" id="lesson name span">Lesson name:</span>
-      <input type="text" class="my-2" size="31" maxlength="30" placeholder="lesson name" aria-label="lesson name" aria-describedby="lesson name" name="name" id="lesson name">
-      <span class="my-3 mx-3 text-danger" id="status"></span>
-    </div>
-    <div class="input-group " align="center">
-      <span class="input-group-text ">Description:</span>
-      <textarea rows="4" cols="36" aria-label="lesson description" maxlength="300" placeholder="lesson description" id="lesson description" name="about"></textarea>
-    </div>
+  <div class="input-group mb-3 d-flex" align="center">
+    <span class="input-group-text my-2" id="lesson name span">Lesson name:</span>
+    <input type="text" class="my-2" size="31" maxlength="30" placeholder="lesson name" aria-label="lesson name" aria-describedby="lesson name" name="name" id="lesson name">
+    <span class="my-3 mx-3 text-danger" id="status"></span>
+  </div>
+  <div class="input-group " align="center">
+    <span class="input-group-text ">Description:</span>
+    <textarea rows="4" cols="36" aria-label="lesson description" maxlength="300" placeholder="lesson description" id="lesson description" name="about"></textarea>
+  </div>
 
 
-    <div class="input-group mb-3 my-3">
-      <input type="file" name="file"  id="videoinput" />
-    </div>
-    <div>
-      <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="/">ADD LESSON</button>
-      <a class="btn mx-3 rounded-pill btn-danger" href="/">CANCEL</a>
-      <script>
-        function isEmpty() {
-          if (
-            document.getElementById("lesson name").value == null ||
-            document.getElementById("lesson name").value.length == 0
-          ) {
-            document.getElementById("status").innerHTML =
-              "You need to fill this entry";
-          } else {
-            document.getElementById("status").innerHTML = "";
-          }
+  <div class="input-group mb-3 my-3">
+    <input type="file" name="file"  id="videoinput" />
+  </div>
+  <div>
+    <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="/">ADD LESSON</button>
+    <a class="btn mx-3 rounded-pill btn-danger" href="/">CANCEL</a>
+    <script>
+      function isEmpty() {
+        if (
+                document.getElementById("lesson name").value == null ||
+                document.getElementById("lesson name").value.length == 0
+        ) {
+          document.getElementById("status").innerHTML =
+                  "You need to fill this entry";
+        } else {
+          document.getElementById("status").innerHTML = "";
         }
-        function changeContent() {
-          document.getElementById("selector").options[0].text = document.getElementById("lessonCategory").value;
-          document.getElementById("selector").options[0].value = document.getElementById("lessonCategory").value;
-          }
-      </script>
-    </div>
-    </form>
-  </body>
+      }
+      function changeContent() {
+        document.getElementById("selector").options[0].text = document.getElementById("lessonCategory").value;
+        document.getElementById("selector").options[0].value = document.getElementById("lessonCategory").value;
+      }
+    </script>
+  </div>
+</form>
+</body>
 </html>
