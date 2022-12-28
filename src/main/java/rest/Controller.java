@@ -41,7 +41,6 @@ public class Controller {
         return modelAndView;
     }
 
-
     @PostMapping(value = "/addpage")
     public ModelAndView addVideo(VideoDto videoDto, @RequestParam("file") MultipartFile file) throws IOException {
         if (!(file.isEmpty())) {
