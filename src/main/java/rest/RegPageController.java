@@ -28,4 +28,6 @@ public class RegPageController {
         model.setView(new RedirectView("/logpage"));
         return model;
     }
+    //todo: валидация email
+    //todo: окно о неверности внесенных данных
 }
