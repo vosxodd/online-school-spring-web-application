@@ -43,13 +43,11 @@ public class VideoService {
         return resultList;
     }
 
-    public List<VideoDto> getCategories() {
+    public List<String> getCategories() {
         List<Video> videos = videoRepository.getCategories();
-        List<VideoDto> resultList = new ArrayList<>();
+        List<String> resultList = new ArrayList<>();
         for (Video video: videos) {
-            VideoDto videoDto = new VideoDto();
-            videoDto.setCategory(video.getCategory());
-            resultList.add(videoDto);
+            resultList.add(video.getCategory());
         }
 
         return resultList;

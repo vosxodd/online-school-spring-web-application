@@ -27,7 +27,7 @@ public class HtmlPageService {
         videoService.removeVideoById(id);
     }
 
-    public List<VideoDto> getCategories() {
+    public List<String> getCategories() {
         return videoService.getCategories();
     }
 }
