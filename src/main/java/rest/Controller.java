@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 import rest.dto.VideoDto;
-import rest.persistence.entity.Person;
 import rest.persistence.repository.PersonRepository;
 import rest.service.FileUploadService;
 import rest.service.HtmlPageService;
@@ -64,18 +62,5 @@ public class Controller {
         modelAndView.clear();
         htmlPageService.removeVideo(id);
         response.sendRedirect("/");
-    }
-    @GetMapping(value = "/regpage")
-    public ModelAndView regPerson() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("regpage");
-        return modelAndView;
-    }
-
-    @PostMapping("/regpage")
-    public ModelAndView regPerson(Person person, ModelAndView model){
-        personRepository.save(person);
-        model.setView(new RedirectView("/logpage"));
-        return model;
     }
 }
