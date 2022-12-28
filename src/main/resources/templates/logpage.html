@@ -14,14 +14,10 @@
         <img th:src="@{/img/book.png}" width="30" height="30" class="d-inline-block align-top" alt="">
         BruhLearning
     </a>
-    <a class="btn btn-dark" href="addpage" style="position:relative; left:-90px">+ add a lesson</a>
-    <a class="btn btn-dark" href="addpage">Login</a>
-
 </nav>
 
 <div class="d-flex justify-content-center">
     <a class="my-3 btn btn-primary" href="regpage" >Зарегистрироваться</a>
-    <a class="my-3 mx-1 btn btn-primary" href="logpage" >Войти</a>
 </div>
 
 <form action="/logpage" method="post" th:object="${personDto}">
