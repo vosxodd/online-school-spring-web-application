@@ -29,6 +29,7 @@ public class Controller {
         ModelAndView modelAndView = new ModelAndView();
         // TODO: Клиент должен принимать "listOfVideos" и размещать названия и категории на странице, а также размещать видео им соответсвующие.
         modelAndView.getModel().put("listOfVideos", htmlPageService.createVideoPage());
+        modelAndView.getModel().put("categoryAndPaths", htmlPageService.getCategoryAndPaths()); // array of <category to listOfPaths>
         modelAndView.getModel().put("title", "Главная страница");
         modelAndView.setViewName("mainpage");
         return modelAndView;

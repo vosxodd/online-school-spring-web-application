@@ -2,6 +2,7 @@ package rest.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
+import rest.dto.CategoryAndPathsDto;
 import rest.dto.VideoDto;
 
 import java.util.List;
@@ -29,6 +30,10 @@ public class HtmlPageService {
 
     public List<String> getCategories() {
         return videoService.getCategories();
+    }
+
+    public List<CategoryAndPathsDto> getCategoryAndPaths() {
+        return videoService.getCategoryAndPaths();
     }
 
 }

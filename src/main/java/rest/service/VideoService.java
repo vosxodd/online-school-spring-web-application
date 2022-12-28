@@ -3,6 +3,7 @@ package rest.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.VideoDto;
+import rest.dto.CategoryAndPathsDto;
 import rest.persistence.entity.Video;
 import rest.persistence.repository.VideoRepository;
 
@@ -71,5 +72,25 @@ public class VideoService {
         //TODO: return true if database is empty.
         return true;
     }
+
+    public List<CategoryAndPathsDto> getCategoryAndPaths() {
+        List<Video> videos = videoRepository.findAllVideos();
+        List<CategoryAndPathsDto> resultList = new ArrayList<>();
+        List<String> categories = getCategories();
+        for (String category: categories) {
+            CategoryAndPathsDto categoryAndPathsDto = new CategoryAndPathsDto();
+            categoryAndPathsDto.setCategory(category);
+            List<String> listOfPaths = new ArrayList<>();
+            for (Video video: videos) {
+                if (video.getCategory().equals(category)) {
+                    listOfPaths.add(video.getVideo());
+                }
+            }
+            categoryAndPathsDto.setListOfPaths(listOfPaths);
+            resultList.add(categoryAndPathsDto);
+        }
+        return resultList;
+    }
+
 }
 
