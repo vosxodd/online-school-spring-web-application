@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import rest.dto.VideoDto;
 import rest.persistence.entity.Person;
 import rest.persistence.repository.PersonRepository;
@@ -13,7 +14,6 @@ import rest.service.VideoService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 
 @RestController
 public class Controller {
@@ -44,7 +44,6 @@ public class Controller {
         return modelAndView;
     }
 
-
     @PostMapping(value = "/addpage")
     public ModelAndView addVideo(VideoDto videoDto, @RequestParam("file") MultipartFile file) throws IOException {
         if (!(file.isEmpty())) {
@@ -74,8 +73,9 @@ public class Controller {
     }
 
     @PostMapping("/regpage")
-    public String regPerson(Person person){
+    public ModelAndView regPerson(Person person, ModelAndView model){
         personRepository.save(person);
-        return "/regpage";
+        model.setView(new RedirectView("/logpage"));
+        return model;
     }
 }

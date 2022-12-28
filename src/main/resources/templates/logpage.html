@@ -21,9 +21,10 @@
 
 <div class="d-flex justify-content-center">
     <a class="my-3 btn btn-primary" href="regpage" >Зарегистрироваться</a>
-    <a class="my-3 mx-1 btn btn-primary" href="loggpage" >Войти</a>
+    <a class="my-3 mx-1 btn btn-primary" href="logpage" >Войти</a>
 </div>
 
+<form action="/logpage" method="post" th:object="${personDto}">
     <div class="d-flex justify-content-center">
         <input type="text" name="email" placeholder="Введите email" required>
     </div>
@@ -34,7 +35,7 @@
     <div class="my-1 d-flex justify-content-center">
         <input class="btn btn-success " type="submit" value="Войти" href="/mainpage">
     </div>
-
+</form>
 
 </body>
 </html>

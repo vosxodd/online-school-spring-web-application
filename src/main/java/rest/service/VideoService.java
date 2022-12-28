@@ -44,7 +44,7 @@ public class VideoService {
     }
 
     public List<String> getCategories() {
-        List<Video> videos = videoRepository.getCategories();
+        List<Video> videos = videoRepository.findAllVideos(); // now it does count same category twice
         List<String> resultList = new ArrayList<>();
         for (Video video: videos) {
             resultList.add(video.getCategory());
