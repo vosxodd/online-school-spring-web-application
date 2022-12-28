@@ -28,7 +28,6 @@ public class VideoService {
         return createAndFillModel(getAllVideos());
     }
 
-    // Yet it is useless
     public List<VideoDto> getAllVideos() {
         List<Video> videos = videoRepository.findAllVideos();
         List<VideoDto> resultList = new ArrayList<>();
