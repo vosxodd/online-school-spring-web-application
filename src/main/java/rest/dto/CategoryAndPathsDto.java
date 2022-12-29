@@ -4,16 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.util.UUID;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideoDto {
-    private String id;
-    private String name;
-    private String about;
+public class CategoryAndPathsDto {
     private String category;
-    private String video;
+    private List<String> listOfNames;
+    private List<String> listOfPaths;
 }

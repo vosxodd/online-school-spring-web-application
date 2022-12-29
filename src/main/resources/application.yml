@@ -7,6 +7,12 @@ spring:
     initialization-mode: never
   thymeleaf:
     cache: false
-
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 200KB
+      max-file-size: 50MB
+      max-request-size: 50MB
 server:
   port: 8080
+

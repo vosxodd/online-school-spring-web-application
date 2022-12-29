@@ -10,10 +10,10 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideoDto {
+public class PersonDto {
     private String id;
-    private String name;
-    private String about;
-    private String category;
-    private String video;
+    private String nickname;
+    private String pwd;
+    private String email;
+    private boolean teacher;
 }

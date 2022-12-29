@@ -12,8 +12,10 @@ import java.util.UUID;
 @Table(name = "videos")
 public class Video {
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String about;
     private String category;
+    private String video;
 }

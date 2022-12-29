@@ -2,9 +2,10 @@ package rest.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
+import rest.dto.CategoryAndPathsDto;
 import rest.dto.VideoDto;
 
-import java.util.UUID;
+import java.util.List;
 
 @Service
 public class HtmlPageService {
@@ -15,7 +16,7 @@ public class HtmlPageService {
         this.videoService = videoService;
     }
 
-    public ModelAndView createVideoPage() {
+    public List<VideoDto> createVideoPage() {
         return videoService.getAllVideos();
     }
 
@@ -23,7 +24,16 @@ public class HtmlPageService {
         return videoService.createVideo(videoDto);
     }
 
-    public void removeVideo(UUID id) {
+    public void removeVideo(Long id) {
         videoService.removeVideoById(id);
     }
+
+    public List<String> getCategories() {
+        return videoService.getCategories();
+    }
+
+    public List<CategoryAndPathsDto> getCategoryAndPaths() {
+        return videoService.getCategoryAndPaths();
+    }
+
 }

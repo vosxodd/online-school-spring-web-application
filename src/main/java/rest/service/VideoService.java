@@ -3,12 +3,12 @@ package rest.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.VideoDto;
+import rest.dto.CategoryAndPathsDto;
 import rest.persistence.entity.Video;
 import rest.persistence.repository.VideoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class VideoService {
@@ -19,33 +19,42 @@ public class VideoService {
         this.videoRepository = userRepository;
     }
 
-    public ModelAndView createVideo(VideoDto studentDto) {
+    public ModelAndView createVideo(VideoDto videoDto) {
         Video video = new Video();
-        video.setId(UUID.randomUUID());
-        video.setName(studentDto.getName());
-        video.setAbout(studentDto.getAbout());
-        video.setCategory(studentDto.getCategory());
-
+        video.setName(videoDto.getName());
+        video.setAbout(videoDto.getAbout());
+        video.setCategory(videoDto.getCategory());
+        video.setVideo("/videos/" + videoDto.getVideo());
         videoRepository.save(video);
-
-        return getAllVideos();
+        return createAndFillModel(getAllVideos());
     }
 
-    // Yet it is useless
-    public ModelAndView getAllVideos() {
+    public List<VideoDto> getAllVideos() {
         List<Video> videos = videoRepository.findAllVideos();
         List<VideoDto> resultList = new ArrayList<>();
-        for (Video video : videos) {
+        for (Video video: videos) {
             VideoDto videoDto = new VideoDto();
-            videoDto.setId(video.getId().toString());
             videoDto.setName(video.getName());
             videoDto.setAbout(video.getAbout());
             videoDto.setCategory(video.getCategory());
             resultList.add(videoDto);
         }
 
-        return createAndFillModel(resultList);
+        return resultList;
     }
+
+    public List<String> getCategories() {
+        List<Video> videos = videoRepository.findAllVideos();
+        List<String> resultList = new ArrayList<>();
+        for (Video video: videos) {
+            if(!(resultList.contains(video.getCategory()))) {
+                resultList.add(video.getCategory());
+            }
+        }
+
+        return resultList;
+    }
+
 
     private ModelAndView createAndFillModel(List<VideoDto> videoDtos) {
         ModelAndView modelAndView = new ModelAndView();
@@ -55,7 +64,7 @@ public class VideoService {
         return modelAndView;
     }
 
-    public void removeVideoById(UUID id) {
+    public void removeVideoById(Long id) {
         videoRepository.deleteById(id);
     }
 
@@ -63,5 +72,28 @@ public class VideoService {
         //TODO: return true if database is empty.
         return true;
     }
+
+    public List<CategoryAndPathsDto> getCategoryAndPaths() {
+        List<Video> videos = videoRepository.findAllVideos();
+        List<CategoryAndPathsDto> resultList = new ArrayList<>();
+        List<String> categories = getCategories();
+        for (String category: categories) {
+            CategoryAndPathsDto categoryAndPathsDto = new CategoryAndPathsDto();
+            categoryAndPathsDto.setCategory(category);
+            List<String> listOfPaths = new ArrayList<>();
+            List<String> listOfNames = new ArrayList<>();
+            for (Video video: videos) {
+                if (video.getCategory().equals(category)) {
+                    listOfNames.add(video.getName());
+                    listOfPaths.add(video.getVideo());
+                }
+            }
+            categoryAndPathsDto.setListOfPaths(listOfPaths);
+            categoryAndPathsDto.setListOfNames(listOfNames);
+            resultList.add(categoryAndPathsDto);
+        }
+        return resultList;
+    }
+
 }
 
