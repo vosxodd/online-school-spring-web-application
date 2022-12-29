@@ -81,12 +81,15 @@ public class VideoService {
             CategoryAndPathsDto categoryAndPathsDto = new CategoryAndPathsDto();
             categoryAndPathsDto.setCategory(category);
             List<String> listOfPaths = new ArrayList<>();
+            List<String> listOfNames = new ArrayList<>();
             for (Video video: videos) {
                 if (video.getCategory().equals(category)) {
+                    listOfNames.add(video.getName());
                     listOfPaths.add(video.getVideo());
                 }
             }
             categoryAndPathsDto.setListOfPaths(listOfPaths);
+            categoryAndPathsDto.setListOfNames(listOfNames);
             resultList.add(categoryAndPathsDto);
         }
         return resultList;

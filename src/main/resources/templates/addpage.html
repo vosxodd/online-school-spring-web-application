@@ -9,11 +9,11 @@
 </head>
 <body>
 <nav class="navbar navbar-light bg-secondary">
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand" th:href="@{/}">
     <img th:src="@{/img/book.png}" width="30" height="30" class="d-inline-block align-top">
     BruhLearning
   </a>
-  <a class="btn btn-dark" href="/addpage">+ add a lesson</a>
+  <a class="btn btn-dark" th:href="@{/addpage}">+ add a lesson</a>
 </nav>
 
 <form action="/addpage" enctype="multipart/form-data" method="post" id="add_form" >
@@ -60,8 +60,8 @@
     <input type="file" name="file"  id="videoinput" />
   </div>
   <div>
-    <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " href="/">ADD LESSON</button>
-    <a class="btn mx-3 rounded-pill btn-danger" href="/">CANCEL</a>
+    <button type="submit" class="btn rounded-pill border-dark btn-dark text-light" value=" ADD LESSON " th:href="@{/}">ADD LESSON</button>
+    <a class="btn mx-3 rounded-pill btn-danger" th:href="@{/}">CANCEL</a>
     <script>
       function isEmpty() {
         if (
@@ -80,6 +80,10 @@
       }
     </script>
   </div>
+  <errors path="videoinput"></errors>
+  [[${fileError}]]
+  <errors path="lesson name"></errors>
+  [[${nameError}]]
 </form>
 </body>
 </html>

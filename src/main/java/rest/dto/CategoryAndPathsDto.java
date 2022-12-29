@@ -11,5 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 public class CategoryAndPathsDto {
     private String category;
+    private List<String> listOfNames;
     private List<String> listOfPaths;
 }

@@ -8,21 +8,23 @@
   </head>
   <body>
     <nav class="navbar navbar-light bg-secondary">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" th:href="@{/}">
         <img th:src="@{/img/book.png}" width="30" height="30" class="d-inline-block align-top" alt="">
         BruhLearning
       </a>
-      <a class="btn btn-dark" href="addpage">+ add a lesson</a>
+      <a class="btn btn-dark" th:href="@{/addpage}">+ add a lesson</a>
     </nav>
     <table>
         <tr th:each="element : ${categoryAndPaths}">
             <table>
-                <tr th:text="${element.category}"></tr>
-                <td th:each = "m : ${element.listOfPaths}">
+                <tr><th th:text="${element.category}"></th></tr>
+                <tr><td th:each = "m : ${element.listOfPaths}">
                     <video width="320" height="240" controls>
                         <source th:src="${m}" type=video/mp4>
                     </video>
-                </td>
+                </td></tr>
+                <tr><td th:each = "n : ${element.listOfNames}" th:text="${n}">
+                </td></tr>
             </table>
         </tr>
     </table>

@@ -31,6 +31,10 @@ public class LogPageController {
             if (iterable_person.getEmail().equals(person.getEmail())) {
                 modelAndView.setViewName("mainpage");
                 return modelAndView;
+            } else {
+                ModelAndView modelAndVieww = new ModelAndView();
+                modelAndView.setViewName("logpage");
+                return modelAndView;
             }
         }
         modelAndView.setViewName("logpage");
